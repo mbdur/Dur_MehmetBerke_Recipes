@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <%- include('partials/header') %>
+
+  <body>
+    <h2>Chicken</h2>
+    <% recipes.filter(r => r.protein_type === 'Chicken').forEach((recipe) => { %>
+        <p> <%= recipe.name %> </p>
+    <% }) %>
+
+    <h2>Beef</h2>
+    <% recipes.filter(r => r.protein_type === 'Beef').forEach((recipe) => { %>
+        <p> <%= recipe.name %> </p>
+    <% }) %>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <div>
+        <h3>Chicken</h3>
+            <ul>
+                <% recipes.filter(r => r.protein_type === 'Chicken').forEach((recipe) => { %>
+                    <p> <%= recipe.name %> </p>
+                <% }) %>
+            </ul>
+        </div>  
+        <div class>
+            <h3>Beef</h3>
+            <ul>
+                <% recipes.filter(r => r.protein_type === 'Beef').forEach((recipe) => { %>
+                    <p> <%= recipe.name %> </p>
+                <% }) %>
+            </ul>
+        </div>  
+        <div class>
+            <h3>Pork</h3>
+            <ul>
+                <% recipes.filter(r => r.protein_type === 'Pork').forEach((recipe) => { %>
+                    <p> <%= recipe.name %> </p>
+                <% }) %>
+            </ul>
+        </div>  
+        <div class>
+            <h3>Fish</h3>
+            <ul>
+                <% recipes.filter(r => r.protein_type === 'Fish').forEach((recipe) => { %>
+                    <p> <%= recipe.name %> </p>
+                <% }) %>
+            </ul>
+        </div>   
+        <div class>
+            <h3>Vegetarian/Others</h3>
+            <ul>
+                <% recipes.filter(r => r.protein_type === 'Vegetarian' || r.protein_type === 'N/A' ).forEach((recipe) => { %>
+                    <p> <%= recipe.name %> </p>
+                <% }) %>
+            </ul>
+        </div>  
+    </div>
+  </body>
+</html>
