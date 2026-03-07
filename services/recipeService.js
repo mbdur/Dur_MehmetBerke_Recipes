@@ -15,14 +15,21 @@ function getAllRecipes(callback) {
 
 function getRecipeById(id, callback) {
     // =? placeholder is used for safety
-    let sql = 'SELECT * FROM recipes WHERE id = ?';
- 
-    database.query(sql, [id], (err, result) => {
-        if (err) throw err;
-        console.log(result[0].name);  
-        callback(result[0]);
-    });
+    let recipeSql = 'SELECT * FROM recipes WHERE id = ?';
+    let ingredientSql = `
+        SELECT i.name, i.info 
+        FROM ingredients i
+        JOIN recipe_ingredients ri ON i.id = ri.ingredient_id
+        WHERE ri.recipe_id = ?
+    `;
 
+    database.query(recipeSql, [id], (err, recipeResult) => {
+        if (err) throw err;
+        database.query(ingredientSql, [id], (err, ingredientResult) => {
+            if (err) throw err;
+            callback(recipeResult[0], ingredientResult);
+        });
+    });
 }
 
 function insertRecipe(name, protein_type, description, instructions, callback) {

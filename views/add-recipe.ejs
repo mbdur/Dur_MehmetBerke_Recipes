@@ -1,4 +1,29 @@
-<h1>index</h1>
-<h1>recipes</h1>
-<h1>recipe</h1>
-<h1>add-recipe</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Recipe</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <form action="/add-recipe" method="POST">
+        <label>Recipe Name</label>
+        <input type="text" name="name">
+
+        <label>Protein Type</label>
+        <input type="text" name="protein_type">
+
+        <label>Description</label>
+        <input type="text" name="description">
+
+        <label>Instructions</label>
+        <textarea name="instructions"></textarea>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -19,8 +19,8 @@ app.get('/recipes', (req, res) => {
 });
 
 app.get('/recipes/:id', (req, res) => {
-  getRecipeById(req.params.id, (result) =>{
-    res.render('recipe', {result: result});
+  getRecipeById(req.params.id, (recipe, ingredients) =>{
+    res.render('recipe', {recipe: recipe, ingredients: ingredients});
   });
 });
 

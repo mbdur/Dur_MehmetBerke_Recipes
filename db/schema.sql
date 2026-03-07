@@ -55,7 +55,7 @@ INSERT INTO recipes (name, protein_type, description, instructions) VALUES
 ('Artichoke Rice', 'Vegetarian', 'My mom cooks this very good. One of my favorite aegean meals', 'Chop and saute artichoke hearts in olive oil with garlic. Cook rice separately, then mix together with lemon juice and fresh herbs'),
 ('Ribeye', 'Beef', 'Fancyy', 'Let the steak reach room temp. Sear on high heat with butter and garlic, basting constantly. Rest 5 minutes before cutting.'),
 ('Bouillon Soup with Noodles', 'Chicken', 'Grandma would cook it and the house would smell amazing', 'Simmer chicken in water with herbs and olive oil until you have a rich broth. Add pasta and cook until tender. Season with salt.'),
-('Chicken Wings & Rice', 'Chicken', 'Classic!', 'Season wings and cook on stove with butter and a little water. Cook rice with butter and a pinch of salt. Serve wings on top.'),
+('Chicken Legs & Rice', 'Chicken', 'Classic!', 'Season legs and cook on stove with butter and a little water. Cook rice with butter and a pinch of salt. Serve chicken on top.'),
 ('Orange Glazed Salmon', 'Fish', 'Almost impossible to cook salmon bad. Best fish ever', 'Get the ready-to-cook ones from H-E-B and cook on both sides on stove, very easy.'),
 ('Oven Baked Sea Bass', 'Fish', 'My dads delicacy', 'Clean the fish, stuff with garlic, drizzle olive oil all over. Bake at 400F for 20 minutes until skin is crispy and inside juicyy.'),
 ('Pasta Carbonara', 'Pork', 'The authentic (and overrated) way', 'Get a lot of parmesan and black pepper, grind it with egg yolks. Cook guanciale and add the fat into the sauce. Cook spaghetti and mix with the sauce carefully.'),
@@ -68,7 +68,7 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES
 (2, 6), (2, 7), (2, 8), (2, 4),
 -- 3: Bouillon Soup (pasta, chicken, olive oil, herbs)
 (3, 9), (3, 10), (3, 5), (3, 4),
--- 4: Chicken Wings & Rice (chicken, rice, butter)
+-- 4: Chicken Legs & Rice (chicken, rice, butter)
 (4, 10), (4, 2), (4, 7),
 -- 5: Orange Glazed Salmon (orange, salmon, butter)
 (5, 11), (5, 12), (5, 7),
