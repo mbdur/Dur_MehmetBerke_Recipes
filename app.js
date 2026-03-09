@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); // for reading form submissions
 
-const { getAllRecipes, getRecipeById, insertRecipe } = require('./services/recipeService');
+const { getAllRecipes, getAllIngredients, getRecipeById, insertRecipe } = require('./services/recipeService');
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -25,14 +25,27 @@ app.get('/recipes/:id', (req, res) => {
 });
 
 app.get('/add-recipe', (req, res) => {
-    res.render('add-recipe');
+  getAllIngredients((results) => {
+    res.render('add-recipe', {ingredients: results});
+  });
 });
 
-// didn't know how to read user submissions, Claude generated this code. I asked how req.body and redirect works
+// req.body, redirect, and the declaration of values const were done by Claude. Adding the ingredients was challenging and it is kinda restrictive rn with limited options.
 app.post('/add-recipe', (req, res) => {
   const { name, protein_type, description, instructions } = req.body;
-    insertRecipe(name, protein_type, description, instructions, (result) => {
-        res.redirect('add-recipe');
+  const selected = req.body.ingredients || []; // array of ingredient ids checked
+  
+  insertRecipe(name, protein_type, description, instructions, (result) => {
+    const recipeId = result.insertId;
+    const values = [].concat(selected).map(ingId => [recipeId, ingId]);
+    if (values.length > 0) {
+      database.query('INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES ?', [values], (err) => {
+        if (err) throw err;
+        res.redirect('/recipes');
+      });
+    } else {
+      res.redirect('/recipes');
+    }
   });
 });
 

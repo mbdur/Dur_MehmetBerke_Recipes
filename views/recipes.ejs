@@ -7,49 +7,65 @@
 
   <body>
     <%- include('partials/header') %>
-
-    <div>
-        <h3>Chicken</h3>
-            <ul>
+    <div class="recipe-sections">
+        <div class="recipe-section">
+            <h3 onclick="toggleList('chicken')">Chicken</h3>
+            <ul id = 'chicken'>
                 <% recipes.filter(r => r.protein_type === 'Chicken').forEach((recipe) => { %>
-                    <p> <%= recipe.name %> </p>
+                    <p> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> </p>
                 <% }) %>
             </ul>
-        </div>  
-        <div class>
-            <h3>Beef</h3>
-            <ul>
+        </div> 
+
+        <div class="recipe-section">
+            <h3 onclick="toggleList('beef')">Beef</h3>
+            <ul id = 'beef'>
                 <% recipes.filter(r => r.protein_type === 'Beef').forEach((recipe) => { %>
-                    <p> <%= recipe.name %> </p>
+                    <p> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> </p>
                 <% }) %>
             </ul>
         </div>  
-        <div class>
-            <h3>Pork</h3>
-            <ul>
+
+        <div class="recipe-section">
+            <h3 onclick="toggleList('pork')">Pork</h3>
+            <ul id = 'pork'>
                 <% recipes.filter(r => r.protein_type === 'Pork').forEach((recipe) => { %>
-                    <p> <%= recipe.name %> </p>
+                    <p> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> </p>
                 <% }) %>
             </ul>
         </div>  
-        <div class>
-            <h3>Fish</h3>
-            <ul>
+
+        <div class="recipe-section">
+            <h3 onclick="toggleList('fish')">Fish</h3>
+            <ul id = 'fish'>
                 <% recipes.filter(r => r.protein_type === 'Fish').forEach((recipe) => { %>
-                    <p> <%= recipe.name %> </p>
+                    <p> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> </p>
                 <% }) %>
             </ul>
         </div>   
-        <div class>
-            <h3>Vegetarian/Others</h3>
-            <ul>
+
+        <div class="recipe-section">
+            <h3 onclick="toggleList('other')">Vegetarian/Others</h3>
+            <ul id='other'>
                 <% recipes.filter(r => r.protein_type === 'Vegetarian' || r.protein_type === 'N/A' ).forEach((recipe) => { %>
-                    <p> <%= recipe.name %> </p>
+                    <p> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> </p>
                 <% }) %>
             </ul>
         </div>  
+
     </div>
 
     <%- include('partials/footer') %>
   </body>
 </html>
+
+<script>
+    function toggleList(id){
+        const list = document.getElementById(id);
+        if (list.style.display === 'none') {
+            list.style.display = 'block';
+        } else {
+            list.style.display = 'none';
+        }
+    }
+</script>

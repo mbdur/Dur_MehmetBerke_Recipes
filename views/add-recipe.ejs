@@ -9,17 +9,25 @@
     <%- include('partials/header') %>
 
     <form action="/add-recipe" method="POST">
-        <label>Recipe Name</label>
+        <h3>Recipe Name</h3>
         <input type="text" name="name">
 
-        <label>Protein Type</label>
+        <h3>Protein Type</h3>
         <input type="text" name="protein_type">
 
-        <label>Description</label>
+        <h3>Description</h3>
         <input type="text" name="description">
 
-        <label>Instructions</label>
-        <textarea name="instructions"></textarea>
+        <h3>Ingredients</h3>
+        <% ingredients.forEach((ingredient) => { %>
+            <label>
+                <input type="checkbox" name="ingredients" value="<%= ingredient.id %>">
+                <%= ingredient.name %>
+            </label><br>
+        <% }) %>
+
+        <h3>Instructions</h3>
+        <input name="instructions"></input>
 
         <button type="submit">Add Recipe</button>
     </form>

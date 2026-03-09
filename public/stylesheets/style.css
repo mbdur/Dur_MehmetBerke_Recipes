@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   background-color: #efefe8;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 .site-header{
     position: fixed;
@@ -58,4 +58,35 @@ a {
 
 .ingredient:hover {
     text-decoration: underline;
+}
+
+.recipe-sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.recipe-section {
+    width: 60%;
+    margin-bottom: 16px;
+}
+
+.recipe-section h3 {
+    background-color: maroon;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.recipe-section h3:hover {
+    background-color: #a00000;
+}
+
+img{
+    width: 700px;
+    height: 500px;
 }

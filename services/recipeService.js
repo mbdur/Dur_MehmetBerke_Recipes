@@ -1,10 +1,22 @@
-module.exports = { getAllRecipes, getRecipeById, insertRecipe };
+module.exports = { getAllRecipes, getAllIngredients, getRecipeById, insertRecipe };
 const { databaseConnection: database } = require('../db/database');
 
 function getAllRecipes(callback) {
     let sql = 'SELECT * FROM recipes';
  
     database.query(sql, (err, result) => {
+        if (err) throw err;
+        for (let i = 0; i < result.length; i++) {
+            console.log(result[i].name);  
+        }
+        callback(result);
+    });
+}
+
+function getAllIngredients(callback){
+    let sql = 'SELECT * from ingredients'
+    
+    database.query(sql, (err,result) => {
         if (err) throw err;
         for (let i = 0; i < result.length; i++) {
             console.log(result[i].name);  
@@ -32,6 +44,7 @@ function getRecipeById(id, callback) {
     });
 }
 
+
 function insertRecipe(name, protein_type, description, instructions, callback) {
     let sql = "INSERT INTO recipes (name, protein_type, description, instructions) VALUES (?,?,?,?)";
 
@@ -40,3 +53,5 @@ function insertRecipe(name, protein_type, description, instructions, callback) {
         callback(result);
     });
 }
+
+
